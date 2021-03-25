@@ -11,11 +11,9 @@
 <body>
     <?php
     
-    //TODO: create User,Comment,Post tables in the database 
+    //TODO: create User,Comment,Post tables
     //TODO: create the models for each table with crud functions
-    //TODO: Login (authentication and authorization with sessions)
-    //TODO: registration (create a new user with two type admin and normal)
-    //TODO: upload files to the server (imgs)
+    //TODO: Login and authentication and authorization with sessions
 
     
     ?>
