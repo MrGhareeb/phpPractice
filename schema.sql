@@ -59,13 +59,14 @@ insert into USERS_TYPE values (1,'admin');
 insert into USERS_TYPE values (2,'normal');
 
 /*insert into users*/
-insert into USERS(f_name, l_name, email, user_pass,user_type_id) VALUES ('normal','user','normal@gamil.com','$2y$10$fsC4JWHRhdSR2sdyxzrd4erfvDv.DwZhZFhXp.H3ZxuQDtlwjHwNm',2);
-insert into USERS(f_name, l_name, email, user_pass,user_type_id) VALUES ('admin','user','admin@gamil.com','$2y$10$7uDsm4lSXNu8mwP9LOEXau1.YlpD4/CfVSa/Vknoxux9cCo233L2q',1);
+INSERT INTO USERS ( f_name, l_name, email, user_pass, user_type_id) VALUES ('asd', 'asd', 'asd@asd.com', '$2y$10$E0wYxCtMPPS2BtrEdvDnDeuw48E2c9vKIZoSx0ZRR7GeslzgRsgie', 2);
+INSERT INTO USERS ( f_name, l_name, email, user_pass, user_type_id) VALUES ('the', 'admin', 'admin@admin.com', '$2y$10$l.GAbpUa2g7j6frph3yteOmCjOk2ek1Ao0w686ultdisFNR/C.cSW', 1);
 
 /*insert into posts*/
 insert into POSTS(post_title, post_body, created_by) VALUES ('first post','this is the first post I have created',2);
-
 insert into POSTS(post_title, post_body, created_by, post_img) VALUES ('WELCOME','welcome to the blogapp website',2,'http://localhost/dbp2%20practice/assets/img/photo.jpeg');
 
 /*insert into comments*/
 insert into COMMENTS(comment_body, created_by, post_id) VALUES ('this is my first comment',1,1);
+
+

@@ -1,6 +1,6 @@
 <?php
 //import the database class
-include "./Database.php";
+include_once "./Database.php";
 class Post
 {
 
@@ -165,6 +165,7 @@ class Post
         $this->post_time_stamp = $post_time_stamp;
     }
 
+    //TODO: save() save the data in the database
 
     /**
      * create an instance of post
@@ -179,13 +180,8 @@ class Post
         $this->post_img = null;
         $this->post_time_stamp = null;
         //get and store the connection of mysqli
-        $conn = Database::getInstance()->getConnection();
+        $this->conn = Database::getInstance()->getConnection();
     }
-
-    //TODO: initWith set the values of the post instance
-    //TODO: getPostById get the post by id and set the values of the instance
-    //TODO: getAllPosts get all post in the database
-    //TODO: getPostsByCreator get all post by userId (created_by)
 
     /**
      * set the values of the instance variables
@@ -207,9 +203,78 @@ class Post
         $this->post_time_stamp = $post_time_stamp;
     }
 
+    /**
+     * populate the instance with the provided id if it exists
+     * @param string $post_id the id of the post
+     */
     public function getPostById($post_id)
     {
         //the sql query to execute
         $sql = "SELECT * FROM posts WHERE post_id = ?";
+        //prepare the sql for parameters
+        $stmt = $this->conn->prepare($sql);
+        //set the parameters value
+        $stmt->bind_param("i", $post_id);
+        //execute the query
+        $stmt->execute();
+        //get the data as in array
+        $result = $stmt->get_result()->fetch_assoc();
+        //set the values of the instance
+        $this->initWith($result['post_id'], $result['post_title'], $result['post_body'], $result['created_by'], $result['post_img'], $result['post_time_stamp']);
+    }
+
+
+    /**
+     * populate the instance with the provided id if it exists
+     * @param string $post_id the id of the post
+     */
+    public function getPostsByCreator($created_by)
+    {
+        //array of post objects
+        $posts = [];
+        //the sql query to execute
+        $sql = "SELECT * FROM posts WHERE created_by = ?";
+        //prepare the sql for parameters
+        $stmt = $this->conn->prepare($sql);
+        //set the parameters value
+        $stmt->bind_param("s", $created_by);
+        //execute the query
+        $stmt->execute();
+        //get the data as in array
+        $results = $stmt->get_result();
+        //loop throw the data and create an array of post objects
+        while ($row = $results->fetch_assoc()) {
+            //create a new instance of post
+            $post = new Self();
+            //set the data of the post object
+            $post->initWith($row['post_id'], $row['post_title'], $row['post_body'], $row['created_by'], $row['post_img'], $row['post_time_stamp']);
+            //add the post object to the array
+            array_push($posts, $post);
+        }
+        return $posts;
+    }
+
+    /**
+     * get all the posts from the database
+     * @return Post[] return array of post objects
+     */
+    static public function getAllPosts()
+    {
+        //array of post objects
+        $posts = [];
+        //get the connection of the database
+        $conn = Database::getInstance()->getConnection();
+        //query the database
+        $results = $conn->query("SELECT * FROM posts");
+        //loop throw the data and create an array of post objects
+        while ($row = $results->fetch_assoc()) {
+            //create a new instance of post
+            $post = new Self();
+            //set the data of the post object
+            $post->initWith($row['post_id'], $row['post_title'], $row['post_body'], $row['created_by'], $row['post_img'], $row['post_time_stamp']);
+            //add the post object to the array
+            array_push($posts, $post);
+        }
+        return $posts;
     }
 }

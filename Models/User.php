@@ -1,6 +1,6 @@
 <?php
 //import the database class
-include "./Database.php";
+include_once "./Database.php";
 class User
 {
 
@@ -163,7 +163,7 @@ class User
         $this->email = null;
         $this->user_type_id = null;
         //get and store the connection of mysqli
-        $conn = Database::getInstance()->getConnection();
+        $this->conn = Database::getInstance()->getConnection();
     }
 
 
@@ -174,7 +174,7 @@ class User
     public function checkLoggedUser()
     {
         //check if the session is not empty
-        if (!empty($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
             return true;
         } else {
             return false;
@@ -197,6 +197,9 @@ class User
             if (password_verify($user_pass, $this->user_pass)) {
                 //set the session for the logged in user
                 $_SESSION["user_id"] = $this->user_id;
+                return true;
+            }else{
+                return false;
             }
         }
     }
@@ -229,12 +232,17 @@ class User
             $sql = "INSERT INTO USERS(f_name, l_name, email, user_pass,user_type_id) VALUES (?,?,?,?,?)";
             //prepare the sql for the parameters 
             $stmt = $this->conn->prepare($sql);
+            //hash the password
+            $hashedPassword = password_hash($user_pass, PASSWORD_DEFAULT);
             //set the values of the parameters (s for string)
-            $stmt->bind_param("ssssss", $this->f_name, $this->l_name, $this->email, $user_pass, $user_type_id);
+            $stmt->bind_param("sssss", $this->f_name, $this->l_name, $this->email, $hashedPassword, $user_type_id);
             //run the sql command
             $stmt->execute();
             //get the id of the user after the insert as set the value of the user_id variable
             $this->user_id = $stmt->insert_id;
+            return true;
+        } else {
+            return false;
         }
     }
     /**
@@ -251,7 +259,7 @@ class User
         //get the data as an object(fetch_object()) and check if the results is empty
         if (!empty($user)) {
             //return true of the result is not empty
-            $this->initWith($user->user_Id, $user->f_name, $user->l_name, $user->email, $user->user_pass, $user->user_type_id);
+            $this->initWith($user->user_id, $user->f_name, $user->l_name, $user->email, $user->user_pass, $user->user_type_id);
             return true;
         } else {
             //return false of the result is empty
@@ -266,14 +274,19 @@ class User
     public function existsWithEmail()
     {
         //sql query to execute
-        $sql = "SELECT * FROM USERS WHERE email = $this->email";
-        //query the database
-        $results = $this->conn->query($sql);
-        $user = $results->fetch_object();
+        $sql = "SELECT * FROM USERS WHERE email = ?";
+        //prepare the sql
+        $stmt = $this->conn->prepare($sql);
+        //set the value of the parameters
+        $stmt->bind_param("s", $this->email);
+        //run the sql
+        $stmt->execute();
+        //get the data
+        $user = $stmt->get_result()->fetch_object();
         //get the data as an object(fetch_object()) and check if the results is empty
         if (!empty($user)) {
             //return true if the result is not empty and init the instance
-            $this->initWith($user->user_Id, $user->f_name, $user->l_name, $user->email, $user->user_pass, $user->user_type_id);
+            $this->initWith($user->user_id, $user->f_name, $user->l_name, $user->email, $user->user_pass, $user->user_type_id);
             return true;
         } else {
             //return false of the result is empty
