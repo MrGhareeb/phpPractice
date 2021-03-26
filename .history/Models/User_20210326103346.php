@@ -1,0 +1,163 @@
+<?php
+Class User{
+
+     /**
+    * store the userId
+    * @var string 
+    */
+   private $userId;
+       /**
+    * store the first name of the user
+    * @var string 
+    */
+   private $fName;
+       /**
+    * store the last name of the user
+    * @var string 
+    */
+   private $lName;
+       /**
+    * store the email of the user
+    * @var string 
+    */
+   private $email;
+       /**
+    * store the user type id (foreign key from the users_type in the database)
+    * @var string 
+    */
+   private $userTypeId;
+
+    public function __construct($userId,$fName,$lName,$email,$userTypeId){
+        //set the value of the variables
+        $this->userId = $userId;
+        $this->fName = $fName;
+        $this->lName = $lName;
+        $this->email = $email;
+        $this->userTypeId = $userTypeId;
+         
+
+    }
+
+
+
+
+   /**
+    * Get store the userId
+    *
+    * @return  string
+    */ 
+   public function getUserId()
+   {
+      return $this->userId;
+   }
+
+   /**
+    * Set store the userId
+    *
+    * @param  string  $userId  store the userId
+    *
+    * @return  self
+    */ 
+   public function setUserId(string $userId)
+   {
+      $this->userId = $userId;
+
+      return $this;
+   }
+
+   /**
+    * Get store the first name of the user
+    *
+    * @return  string
+    */ 
+   public function getFName()
+   {
+      return $this->fName;
+   }
+
+   /**
+    * Set store the first name of the user
+    *
+    * @param  string  $fName  store the first name of the user
+    *
+    * @return  self
+    */ 
+   public function setFName(string $fName)
+   {
+      $this->fName = $fName;
+
+      return $this;
+   }
+
+   /**
+    * Get store the last name of the user
+    *
+    * @return  string
+    */ 
+   public function getLName()
+   {
+      return $this->lName;
+   }
+
+   /**
+    * Set store the last name of the user
+    *
+    * @param  string  $lName  store the last name of the user
+    *
+    * @return  self
+    */ 
+   public function setLName(string $lName)
+   {
+      $this->lName = $lName;
+
+      return $this;
+   }
+
+   /**
+    * Get store the email of the user
+    *
+    * @return  string
+    */ 
+   public function getEmail()
+   {
+      return $this->email;
+   }
+
+   /**
+    * Set store the email of the user
+    *
+    * @param  string  $email  store the email of the user
+    *
+    * @return  self
+    */ 
+   public function setEmail(string $email)
+   {
+      $this->email = $email;
+
+      return $this;
+   }
+
+   /**
+    * Get store the user type id (foreign key from the users_type in the database)
+    *
+    * @return  string
+    */ 
+   public function getUserTypeId()
+   {
+      return $this->userTypeId;
+   }
+
+   /**
+    * Set store the user type id (foreign key from the users_type in the database)
+    *
+    * @param  string  $userTypeId  store the user type id (foreign key from the users_type in the database)
+    *
+    * @return  self
+    */ 
+   public function setUserTypeId(string $userTypeId)
+   {
+      $this->userTypeId = $userTypeId;
+
+      return $this;
+   }
+}

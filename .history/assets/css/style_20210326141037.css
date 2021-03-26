@@ -1,0 +1,46 @@
+body{
+    background-color: #c7c7c7;
+    font-family: Arial, sans-serif;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: rgb(39, 39, 39);
+}
+
+nav ul {
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    list-style-type: none;
+    color: white;
+    padding: 1rem 0.5rem;
+    margin: 0;
+}
+
+nav ul li a{
+    margin: 0;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover{
+    color: rgb(160, 160, 160);
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    
+}
+.post{
+    background-color: white;
+    box-shadow: 0 0 0 10px black;
+    width: 100%;
+}

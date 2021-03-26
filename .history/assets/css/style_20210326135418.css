@@ -1,0 +1,16 @@
+body{
+    background-color: #efefef;
+    font-family: Arial, sans-serif;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: rgb(39, 39, 39);
+}
+
+nav ul {
+    display: flex;
+    text-decoration: none;
+}
