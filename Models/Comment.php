@@ -140,9 +140,7 @@ class Comment
         $this->post_id = null;
         $this->comment_stamp_date = null;
     }
-
-    //TODO: getCommentsByPost get all the comment by post_id 
-    //TODO: initWith set the values of the instance
+ 
     /**
      * * @param string $comment_id the id if the comment 
      * * @param string $comment_body the body of the comment
