@@ -1,3 +1,8 @@
+# Basic Setup
+  - git clone or download zip then put the directory (file) in your htdocs folder.
+  - rename the folder to be "dbp2 practice" otherwise the image urls will not work.
+  - copy the schema.sql code and run it in your favorite mysql software of choice
+  - enjoy :)
 # Agenda
  ## Basics and how does php work.
   - where does the php tag run?
@@ -33,13 +38,7 @@
 
 ## File upload
   - TBA.
-
-# Basic Setup
-  - git clone or download zip then put the directory (file) in your htdocs folder.
-  - rename the folder to be "dbp2 practice" otherwise the image urls will not work.
-  - copy the schema.sql code and run it in your favorite mysql software of choice
-  - enjoy :)
-  ## Users
+  # Users
   The users that come the the schema.sql file
   Email | Password
   ------|----------
