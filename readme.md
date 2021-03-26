@@ -34,5 +34,12 @@
 ## File upload
   - TBA.
 
+<br>
+<br>
 
 # Basic Setup
+  - git clone or download zip then put the directory (file) in your htdocs folder.
+  - rename the folder to be "dbp2 practice" otherwise the image urls will not work.
+  - copy the schema.sql code and run it in your favorite mysql software of choice
+  - enjoy :)
+
