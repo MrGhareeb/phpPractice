@@ -1,6 +1,9 @@
+# Download Link
+[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/MrGhareeb/phpPractice/releases/tag/latest)
+
 # Basic Setup
   - git clone or download zip then put the directory (file) in your htdocs folder.
-  - rename the folder to be "dbp2 practice" otherwise the image urls will not work.
+  - rename the folder to be "dbp2 practice" otherwise the image urls will not work (if you clone).
   - copy the schema.sql code and run it in your favorite mysql software of choice
   - modify the connection string in the Database class and in the examples if necessary (if you changed the password, etc ..)
   - enjoy :)
