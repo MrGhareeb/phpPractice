@@ -43,7 +43,7 @@
 ## File upload
   - TBA.
   # Users
-  The users that come the the schema.sql file
+  The users that come the the schema.sql file 
   Email | Password
   ------|----------
   asd@asd.com|asd
