@@ -1,6 +1,3 @@
-# Download Link
-[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/MrGhareeb/phpPractice/releases/tag/latest)
-
 # Basic Setup
   - git clone or download zip then put the directory (file) in your htdocs folder.
   - rename the folder to be "dbp2 practice" otherwise the image urls will not work (if you clone).
